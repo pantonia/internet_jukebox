@@ -12,9 +12,9 @@
 <body>
 <?php
 
-$text1_text = file_get_contents('text1.txt', true);
-$text2_text = file_get_contents('text2.txt', true);
-$text3_text = file_get_contents('text3.txt', true);
+$text1_text = file_get_contents('./forum/text1.txt', true);
+$text2_text = file_get_contents('./forum/text2.txt', true);
+$text3_text = file_get_contents('./forum/text3.txt', true);
 
 
 $filename = "jukebox.config";
@@ -34,7 +34,7 @@ $hosts_white_html = "";
 foreach ($host_white as $a_host => $data)
 { 
     $h_name = explode(".", $data);
-    $img_name = $h_name[0]."_logo.png";
+    $img_name = "./logos/".$h_name[0]."_logo.png";
     if (file_exists($img_name)) {
         $hosts_white_html .= "<a target=new_window href=\"http://www.$data\"><img width=100 src=$img_name></a>&nbsp;&nbsp;"; 
     }
@@ -48,7 +48,7 @@ $hosts_black_html = "";
 foreach ($host_black as $a_host => $data)
 { 
     $h_name = explode(".", $data);
-    $img_name = $h_name[0]."_logo.png";
+    $img_name = "./logos/".$h_name[0]."_logo.png";
     if (file_exists($img_name)) {
         $hosts_black_html .= "<a valign=top target=new_window href=\"http://www.$data\"><img width=100 src=$img_name></a>&nbsp;&nbsp;"; 
     }
@@ -58,7 +58,7 @@ foreach ($host_black as $a_host => $data)
 }
 
 
-echo "<h1>IP/MAC ADDRESS</h1>";
+//echo "<h1>IP/MAC ADDRESS</h1>";
 //capture their ip address
 $ip  = $_SERVER["REMOTE_ADDR"];
 ////this is the path to the arp command used to get user MAC address from
@@ -71,7 +71,7 @@ $arp="/usr/sbin/arp";
 //$mac= shell_exec("sudo $arp -an " . $ip);
 //preg_match('/..:..:..:..:..:../',$mac, $matches);
 //$mac =@$matches[0];
-echo " . $ip ";
+//echo " . $ip ";
 //echo " . $mac";
 //
 ////if mac couldn't be identified
@@ -153,7 +153,7 @@ if(isset($_POST["ip"]) && isset($_POST["mac"])){
     <br/>
     <br/>
 
-<form id="stupid_form" action="stupid_forum.php" method="POST">
+<form id="stupid_form" method="POST">
 <textarea id="text1" name="text1" class="form-control" rows="10"><?php echo $text1_text?></textarea>
 <textarea id="text2" name="text2" class="form-control" rows="10"><?php echo $text2_text?></textarea>
 <textarea id="text3" name="text3" class="form-control" rows="10"><?php echo $text3_text?></textarea>
