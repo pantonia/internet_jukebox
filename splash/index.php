@@ -6,9 +6,17 @@
 <!-- Bootstrap -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="jukebox.css" media="screen" title="home">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="jukebox.js"></script>
 </head>
 <body>
 <?php
+
+$text1_text = file_get_contents('text1.txt', true);
+$text2_text = file_get_contents('text2.txt', true);
+$text3_text = file_get_contents('text3.txt', true);
+
+
 $filename = "jukebox.config";
 $lines = file($filename, FILE_IGNORE_NEW_LINES);
 //print "<pre>";
@@ -132,40 +140,26 @@ if(isset($_POST["ip"]) && isset($_POST["mac"])){
 
     <h2>Local content</h2>
 
-    You can directly download the following content:
-
-    <table class="table table-hover">
-    <thead>
-        <tr><th>Name</th><th>Description</th><th>Source</th></tr>
-    </thead/>
-    <tbody>
-        <tr><td>test</tf><td>test</td><td>youtube</td></tr>
-        <tr><td>test</tf><td>test</td><td>youtube</td></tr>
-        <tr><td>test</tf><td>test</td><td>youtube</td></tr>
-    </tbody>
-    </table>
-
-    <h4>Contribute a file:</h4>
-    <input type="file" id="exampleInputFile">
+    You can directly download/upload content to the local folder:
     <br/>
     <br/>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <iframe align=center width="770" height="400" src="./dirlist/index.php"></iframe> 
 
     <br/>
     <br/>
     <h2>Message board</h2>
 
-    Leave an anonymous message on our virtual message board
+    Leave an anonymous message on our virtual message board (inspired by <a href="http://stupidforum.com">stupid forum</a>)
     <br/>
     <br/>
 
-    <textarea class="form-control" rows="10"></textarea>
-    <textarea class="form-control" rows="10"></textarea>
-    <br/>
-    <textarea class="form-control" rows="10"></textarea>
-    <textarea class="form-control" rows="10"></textarea>
+<form id="stupid_form" action="stupid_forum.php" method="POST">
+<textarea id="text1" name="text1" class="form-control" rows="10"><?php echo $text1_text?></textarea>
+<textarea id="text2" name="text2" class="form-control" rows="10"><?php echo $text2_text?></textarea>
+<textarea id="text3" name="text3" class="form-control" rows="10"><?php echo $text3_text?></textarea>
     <br/>
     <button type="submit" class="btn btn-primary">Save</button>
+</form>
 
 
 </div>
