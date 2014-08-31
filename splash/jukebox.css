@@ -1,0 +1,84 @@
+body {
+    font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+    font-color: #333333;font-size:large;font-weight: normal;line-height:1.5;
+    background-color: #FF9900;
+}
+
+a, a:link, a:active {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.flickr {
+  color:blue;
+  text-decoration: none; text-align:bottom; 
+}
+
+img {
+	border: 0px none;
+	vertical-align: bottom;
+}
+
+.comment{ font: italic 9pt tahoma; color:gray;}
+
+div.center
+{ 
+#text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+margin-left: auto;
+margin-right: auto;
+width:900px;
+background-color: #FFFFFF;
+}
+
+span.title{
+    font-size:14pt;
+    font-weight:bold;
+}
+
+a{
+    color:blue;
+    font-weight:bold;
+}
+
+span.blue{
+    color:blue;
+    font-weight:bold;
+}
+
+.main2 table
+{
+    text-align: left;
+    background-color: #FFFFFF;
+    width:600px;
+}
+
+
+.main table
+{
+    text-align: left;
+    background-color: #FFFFFF;
+    width:800px;
+    padding: 20px;
+    border-collapse: separate;
+    border-spacing: 30px;
+}
+
+
+.center table
+{ 
+margin-left: auto;
+margin-right: auto;
+text-align: left;
+background-color: #FFFFFF;
+width:900px;
+padding: 20px;
+border-collapse: separate;
+border-spacing: 30px;
+}
