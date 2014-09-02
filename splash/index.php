@@ -7,6 +7,11 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="jukebox.css" media="screen" title="home">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+if (!window.jQuery) {
+        document.write('<script src="/js/jquery.min.js"><\/script>');
+}
+</script>
 <script src="jukebox.js"></script>
 </head>
 <body>
@@ -15,6 +20,8 @@
 $text1_text = file_get_contents('./forum/text1.txt', true);
 $text2_text = file_get_contents('./forum/text2.txt', true);
 $text3_text = file_get_contents('./forum/text3.txt', true);
+
+$simple_chat_text = file_get_contents('./chat/simple_chat.txt', true);
 
 
 $filename = "jukebox.config";
@@ -147,6 +154,7 @@ if(isset($_POST["ip"]) && isset($_POST["mac"])){
 
     <br/>
     <br/>
+
     <h2>Message board</h2>
 
     Leave an anonymous message on our virtual message board (inspired by <a href="http://stupidforum.com">stupid forum</a>)

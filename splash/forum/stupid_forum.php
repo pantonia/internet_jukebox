@@ -3,6 +3,8 @@
 
 $data = array();      // array to pass back data
 
+file_put_contents('./panos.txt', 'test');
+
 $text1 = $_POST['text1'];
 $text2 = $_POST['text2'];
 $text3 = $_POST['text3'];
