@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Leaflet Quick Start Guide Example</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="leaflet_files/leaflet.css">
+</head>
+<body>
+
+	<div tabindex="0" class="leaflet-container leaflet-fade-anim" id="map" style="width: 600px; height: 400px; position: relative;">
+        
+        <div style="transform: translate(0px, 0px);" class="leaflet-map-pane">
+            <div class="leaflet-tile-pane"><div class="leaflet-layer">
+                    <div class="leaflet-tile-container"></div>
+                    <div class="leaflet-tile-container leaflet-zoom-animated"><img src="leaflet_files/2723.jpeg" style="height: 256px; width: 256px; transform: translate(56px, -91px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2723_002.jpeg" style="height: 256px; width: 256px; transform: translate(312px, -91px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2724_004.jpeg" style="height: 256px; width: 256px; transform: translate(56px, 165px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2724_002.jpeg" style="height: 256px; width: 256px; transform: translate(312px, 165px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2723_003.jpeg" style="height: 256px; width: 256px; transform: translate(-200px, -91px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2723_004.jpeg" style="height: 256px; width: 256px; transform: translate(568px, -91px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2724.jpeg" style="height: 256px; width: 256px; transform: translate(-200px, 165px);" class="leaflet-tile leaflet-tile-loaded"><img src="leaflet_files/2724_003.jpeg" style="height: 256px; width: 256px; transform: translate(568px, 165px);" class="leaflet-tile leaflet-tile-loaded"></div></div></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"><img style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate(300px, 247px);" class="leaflet-marker-shadow leaflet-zoom-animated" src="leaflet_files/marker-shadow.png"></div><div class="leaflet-overlay-pane"><svg viewBox="-91 -61 782 521" height="521" width="782" style="transform: translate(-91px, -61px);" class="leaflet-zoom-animated"><g><path d="M183,130A42,42,0,1,1,182.9,130 z" class="leaflet-clickable" fill-opacity="0.5" fill="#f03" stroke-width="5" stroke-opacity="0.5" stroke="red" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></g><g><path d="M358 163L474 219L550 153z" class="leaflet-clickable" fill-opacity="0.2" fill="#0033ff" stroke-width="5" stroke-opacity="0.5" stroke="#0033ff" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></div><div class="leaflet-marker-pane"><img tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate(300px, 247px); z-index: 247;" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" src="leaflet_files/marker-icon.png"></div><div class="leaflet-popup-pane"><div style="opacity: 1; transform: translate(300px, 247px); bottom: 27px; left: -57px;" class="leaflet-popup  leaflet-zoom-animated"><a href="#close" class="leaflet-popup-close-button">×</a><div class="leaflet-popup-content-wrapper"><div style="width: 75px;" class="leaflet-popup-content"><b>Hello world!</b><br>I am a popup.</div></div><div class="leaflet-popup-tip-container"><div class="leaflet-popup-tip"></div></div></div></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a title="Zoom in" href="#" class="leaflet-control-zoom-in">+</a><a title="Zoom out" href="#" class="leaflet-control-zoom-out">-</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com/">Mapbox</a></div></div></div></div>
+
+	<script src="leaflet_files/leaflet.js"></script>
+	<script>
+
+		var map = L.map('map').setView([51.505, -0.09], 13);
+
+		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			id: 'examples.map-i875mjb7'
+		}).addTo(map);
+
+
+		L.marker([51.5, -0.09]).addTo(map)
+			.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+		L.circle([51.508, -0.11], 500, {
+			color: 'red',
+			fillColor: '#f03',
+			fillOpacity: 0.5
+		}).addTo(map).bindPopup("I am a circle.");
+
+		L.polygon([
+			[51.509, -0.08],
+			[51.503, -0.06],
+			[51.51, -0.047]
+		]).addTo(map).bindPopup("I am a polygon.");
+
+
+		var popup = L.popup();
+
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("You clicked the map at " + e.latlng.toString())
+				.openOn(map);
+		}
+
+		map.on('click', onMapClick);
+
+	</script>
+
+
+</body></html>

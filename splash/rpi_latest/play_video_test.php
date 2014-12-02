@@ -1,0 +1,4 @@
+<?php
+
+exec "sudo om
+?>

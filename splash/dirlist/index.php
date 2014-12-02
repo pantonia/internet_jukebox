@@ -42,8 +42,7 @@ session_start();
 require("dirLIST_files/config.php");
 require("dirLIST_files/functions.php");
 
-//$url_folder = base64_decode(trim($_GET['folder']));
-//$url_folder = "../files";
+$url_folder = base64_decode(trim($_GET['folder']));
 if(!empty($_GET['folder']))
 	$dir_to_browse .= $url_folder."/";
 

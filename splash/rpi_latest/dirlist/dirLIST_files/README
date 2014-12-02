@@ -1,0 +1,118 @@
++-----------------------------------------------------------------------------------+
+|	dirLIST - PHP Directory Lister Version 0.3.0									|
+|	Copyright © 2009 Hamdiya														|
+|	Support: hamdiya.dev@gmail.com													|
+|																					|
+|	PHP Directory Lister is free software; you can redistribute it and/or modify	|
+|	it under the terms of the GNU General Public License as published by			|
+|	the Free Software Foundation; either version 2 of the License, or				|
+|	(at your option) any later version.												|
+|																					|
+|	This program is distributed in the hope that it will be useful,					|
+|	but WITHOUT ANY WARRANTY; without even the implied warranty of					|
+|	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the					|
+|	GNU General Public License for more details.									|
+|																					|
+|	You should have received a copy of the GNU General Public License				|
+|	along with this program; if not, write to the Free Software						|
+|	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA			|
++-----------------------------------------------------------------------------------+
+
++--------+
+|FEATURES|
++--------+
+
+• List all the files and folders in a given HTTP or FTP directory
+• Image gallery for viewing image files
+• Media player for playing MP3 files in your browser
+• Thumbnail or classic list view of files and folders
+• Admin feature to enable file and folder deletion and renaming
+• 4 interface languages; English, French, German and Spanish
+• Color schemes
+• File icons
+• Force download speed limit
+• File uploads (file type banning and auto file rename)***SEE SECURITY WARNING BELOW***
+• Show the sizes of folders and files
+• Sort content based on name, size or upload date (users can choose aswell)
+• Hide file extensions
+• Ability to exclude specific files and folders
+• Ability to exclude files with certain extensions
+• Works on both UNIX and Windows systems
+• Statistics – Total files and folders and page load time
+• User customizable
+
++-----------+
+|REQUIRMENTS|
++-----------+
+
+• PHP 5.0 or above
+• fopen wrappers enabled
+• For GIF thumbnails, you need gdlib v 1.6 or below or version 2.0.28 or higher
+
+
++------------+
+|INSTALLATION|
++------------+
+
+Extract the contents of the archive in the directory you want to list on your webserver
+
+
++-------------+
+|CONFIGURATION|
++-------------+
+
+Open "dirLIST/config.php" and follow the "USER CONFIGURATION" instructions. Default configuration is sufficient for using the script straight away.
+
++-----------------+
+|THUMBNAIL CACHING|
++-----------------+
+
+dirLIST versions 0.3.0 and above include the image thumbnail feature. In order to speed up the user experience, it is recommended that you run dirLIST_files/cache_thumbs.php which will generate and save thumbnails of all the images under the main listed directory.
+
++------------+
+|FILE UPLOADS|
++------------+
+
+***ENABLE THIS FEATURE AT YOUR OWN RISK***
+
+Users can upload PHP files with code to cause damage such as delete your entire webroot, retrieve your MySQL passwords etc... To help against this, place .php, .php3, .php5 extensions in the banned file types (included by default). This can be found in the configuration file (dirLIST_files/config.php). To further protect against this, enable download speed limit. This will effectively pipe any downloads through a PHP script and hence disable direct access to files preventing execution of any server side scripts. Please also see the security tips below.
+
+Due to different server configurations, setting the maximum file upload size can differ from one server to another. You will need to find out how to change the limit by contacting your host. Most common methods include the use of either a .htaccess or php.ini file. If you are the owner, you can directly edit PHP's configuration file and change the following variables:
+
+upload_max_filesize
+post_max_size
+
+These can also be adjusted as mentioned above by the use of .htaccess/php.ini files, but this again depends on your host.
+
+.htaccess file example (uploaded to the root or your site)
+
+php_value upload_max_filesize 20M
+php_value post_max_size 20M
+
+php.ini file example (uploaded to the root or your site)
+
+upload_max_filesize = 20M
+post_max_size = 20M
+
+
++-------------+
+|SECURITY TIPS|
++-------------+
+
+• Place dirLIST in a directory other than the one you are listing. This will make it harder for people to find and directly access your files. For example, place dirLIST in "home/webroot/" and list "home/webroot/folder/images/". People will not know you are listing the images folder and hence cant find your files easily. This can be used in conjunction with download speed limit which will pipe downloads through a PHP script and effectively prevent direct access to files.
+
++---------------------------+
+|CHECKING FOR dirLIST UPDATE|
++---------------------------+
+
+For this to work, you need to be logged in as the admin (the admin feature is enabled by default but the credentials need to be setup in the dirLIST_files/config.php file). Simple click on the `Check for Update` link and if an update is available, you will be presented with a link to download it.
+
++-------+
+|SUPPORT|
++-------+
+
+If you need any help, contact me on hamdiya.dev@gmail.com. 
+
+Suggestions and bug reports are highly appreciated.
+
+WEBSITE: http://dir-list.sourceforge.net/

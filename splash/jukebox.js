@@ -38,6 +38,8 @@ $('#stupid_form').submit(function(event) {
         'text3': $('#text3').val()
     };
 
+    $('#debugdiv').append("test");
+
 console.log(formData);
     $.ajax({
         type    : 'POST', // define the type of HTTP verb we want to use (POST for our form)

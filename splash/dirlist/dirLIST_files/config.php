@@ -18,7 +18,7 @@ $dir_to_browse = "./"; //default[HTTP] = "./" or default[FTP] = "/"
 
 //Admin username, password and wheather to display a link for the admin to login
 $admin_username = 'admin'; //you can change this to what ever you want
-$admin_password = 'nethood';
+$admin_password = '';
 $admin_login_link = 1; //0:Not Displayed 1:Displayed
 
 //Download speed limit for files (HTTP only, FTP currently not supported). 0:Disable 1:Enable
@@ -26,9 +26,9 @@ $limit_download_speed = 0; //default = 0
 $speed = 512; //Value in KB/s (KiloBytes per second). An example value: 128 (do not include "KB/s")
 
 //File uploading (HTTP only, FTP currently not supported). ***ENABLE THIS FEATURE AT YOUR OWN RISK***. Please refer to the readme file (dirLIST_files/README.txt). For the maximum file upload size, please also refer to the readme file.
-$file_uploads = 1; //default = 1;
+$file_uploads = 0; //default = 1;
 $banned_file_types = array('.php', '.php3', '.php4', '.php5', '.htaccess', '.htpasswd', '.asp', '.aspx'); //add any other extensions you want banned (in lower-case)
-$display_banned_files = 0; //Enable this to display a list of the file types banned on the main page. 0:Disable 1:Enable
+$display_banned_files = 1; //Enable this to display a list of the file types banned on the main page. 0:Disable 1:Enable
 
 //Files and/or folders to exclude from listing. dirLIST related files and folders are automatically excluded.
 $exclude = array('.','..','.ftpquota','.htaccess', '.htpasswd', 'dirLIST_files');

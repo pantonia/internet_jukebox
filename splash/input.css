@@ -1,0 +1,77 @@
+
+input[type="number"] {
+       width:35px;
+}
+
+input[type=radio] {
+border: 0px;
+width: 100%;
+height: 2em;
+}
+
+input[type=button] {
+border: 0px;
+width: 100%;
+height: 2em;
+}
+
+span.time{
+    color:blue;
+    font-weight:bold;
+}
+
+.searchButton
+{
+font-size:20px;
+}
+
+.colorimg
+{
+    border: 10px solid;
+    border-color: red;
+}
+
+.submitButton
+{
+background-color: #E3E1B8;
+color: #000000;
+width: 90%;
+height: 2em;
+font-size:20px;
+position:relative;
+display:block;
+text-decoration:none;
+margin:0 auto;
+border-radius:5px;
+border:solid 1px #D94E3B;
+background:#cb3b27;
+text-align:center;
+padding:10px 10px 10px 10px;
+ -webkit-transition: all 0.1s;
+ -moz-transition: all 0.1s;
+ transition: all 0.1s;
+ -webkit-box-shadow: 0px 9px 0px #84261a;
+ -moz-box-shadow: 0px 9px 0px #84261a;
+ box-shadow: 0px 9px 0px #84261a;
+}
+
+input[type=submit] {
+font-size:20px;
+}
+
+.jukebox_table td
+{ 
+padding: 15px;
+}
+
+.jukebox_table table
+{ 
+margin-left: auto;
+margin-right: auto;
+text-align: left;
+background-color: #FFFFFF;
+width:450px;
+padding: 5px;
+border-collapse: separate;
+border-spacing: 5px;
+}
