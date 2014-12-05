@@ -1,7 +1,0 @@
-
-
-List of active users
-Dynamic update of new activity
-Photo upload with resize + comments
-Questions/answers + statistics
-Chat room
