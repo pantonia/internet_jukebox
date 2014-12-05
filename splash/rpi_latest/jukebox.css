@@ -1,0 +1,99 @@
+body {
+    font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+    font-color: #333333;font-size:large;font-weight: normal;line-height:1.5;
+    background-color: #FF9900;
+}
+
+a, a:link, a:active {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.flickr {
+  color:blue;
+  text-decoration: none; text-align:bottom; 
+}
+
+img {
+	border: 0px none;
+	vertical-align: bottom;
+}
+
+.comment{ font: italic 9pt tahoma; color:gray;}
+
+input[type="number"] {
+       width:30px;
+   }
+
+div.top
+{ 
+text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+margin-left: auto;
+margin-right: auto;
+    padding: 20px;
+width:900px;
+background-color: #FFFFFF;
+}
+
+div.center
+{ 
+text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+margin-left: auto;
+margin-right: auto;
+width:900px;
+height:650px;
+background-color: #FFFFFF;
+}
+
+span.title{
+    font-size:14pt;
+    font-weight:bold;
+}
+
+span.label{
+    font-size:12pt;
+    font-weight:bold;
+    text-align: center;
+}
+
+a{
+    color:blue;
+    font-weight:bold;
+}
+
+span.blue{
+    color:blue;
+    font-weight:bold;
+}
+
+
+.main table
+{
+    background-color: #FFFFFF;
+    width:800px;
+    padding: 0px;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+
+.center table
+{ 
+margin-left: auto;
+margin-right: auto;
+text-align: left;
+background-color: #FFFFFF;
+width:900px;
+padding: 20px;
+border-collapse: separate;
+border-spacing: 30px;
+}

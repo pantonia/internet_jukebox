@@ -1,0 +1,54 @@
+dirLIST Change Log
+
++-----+
+|0.3.0|
++-----+
+[Feature] Image gallery for viewing image files
+[Feature] Media player for playing MP3 files in your browser
+[Feature] Thumbnail or classic list view of files and folders. Beautiful large icons display in thumbnail mode and where file(s) are images, a preview of that image is displayed
+[Feature] Admin feature to enable file and folder deletion/renaming
+[Feature] 4 interface languages; English, French, German and Spanish
+[Bug] Download speed limit not working properly with PHP 5.3.0 (and higher) running on Windows
+[Bug] Directory listing not working with IIS FTP servers
+[Bug] A serious security issue that has been fixed. Due to it's nature, it's description will not be discussed.
+[Bug] Files with no extension are not displayed
+[Bug] Disabling file icons results in files not being listed
+[Bug] When no files exist in a directory, folder icons dont show
+[Bug] Color schemes not working under some PHP4 distributions
+[Bug] Hiding file extensions confilcts with file icons
+[Code Changes] When uploading a file and it fails, it now goes back to the previous directory instead of the home directory.
+[Interface] The dirLIST interface has been slightly updated
+
+...and many more code changes
+
++-----+
+|0.2.0|
++-----+
+[Feature] Download speed limit
+[Feature] Hide file extensions
+[Feature] File uploads (file type banning)
+[Feature] Sorting methods (by name, size, or date)
+[Feature] User sortable
+[Feature] File icons
+[Feature] Color schemes
+[Bug] Breadcrumbs not working
+[Bug] File excluding based on extension (case sensative problem)
+[Code Changes] Breadcrumbs rewritten
+[Code Changes] Directory content and details stored in only two arrays: $folders and $files
+
++-----+
+|0.1.1|
++-----+
+
+[Feature] Support for FTP listing
+[Feature] Check for dirLIST update -see README.txt
+[Security] Fixed the ability to browse excluded folders by manually inserting the folder name in the URL 
+[Security] Assigning '..' for the folder variable in the URL would show the parent directory content
+[Code Changes] Major code rewriting. Improved performance
+[Code Changes] base64_encoding for $_GET['folder'] variable
+
++---+
+|0.1|
++---+
+
+First release
