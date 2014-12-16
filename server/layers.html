@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Custom marker tooltips</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+
+<style>
+.leaflet-popup-content img {
+  max-width:100%;
+  }
+</style>
+<div id='map'></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoicGFuYXlvdGlzIiwiYSI6IjhVWVREOTAifQ.NWt_NiMoXds89Q7wF81msw';
+var map = L.mapbox.map('map', 'panayotis.kbh9i6fk')
+    .setView([43.229, -79.453], 5);
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+
+var geoJson = [{
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-77.03, 38.90]},
+    "properties": {
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
+        "url": "https://en.wikipedia.org/wiki/Washington,_D.C.",
+        "marker-symbol": "star",
+        "marker-color": "#aa8888",
+        "marker-size": "large",
+        "city": "Washington, D.C.",
+        "test_property": "test"
+    }
+}, {
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-87.63, 41.88]},
+    "properties": {
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Chicago_sunrise_1.jpg/640px-Chicago_sunrise_1.jpg",
+        "url": "https://en.wikipedia.org/wiki/Chicago",
+        "marker-color": "#ff8888",
+        "city": "Chicago",
+        "test_property": "test"
+    }
+}, {
+    type: 'Feature',
+    "geometry": { "type": "Point", "coordinates": [-74.00, 40.71]},
+    "properties": {
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/NYC_Top_of_the_Rock_Pano.jpg/640px-NYC_Top_of_the_Rock_Pano.jpg",
+        "url": "https://en.wikipedia.org/wiki/New_York_City",
+        "marker-color": "#bbcc88",
+        "city": "New York City",
+        "test_property": "test"
+    }
+}];
+
+// Add custom popups to each using our custom feature properties
+myLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+
+    // Create custom popup content
+    var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
+                            '<img src="' + feature.properties.image + '" />' +
+                            feature.properties.city + " -- "+feature.properties.test_property+
+                        '</a>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+        closeButton: false,
+        minWidth: 320
+    });
+});
+
+// Add features to the map
+myLayer.setGeoJSON(geoJson);
+</script>
+
+
+</body>
+</html>
+
