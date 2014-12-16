@@ -27,6 +27,39 @@
 </div>
 <!-- [END] Looping through all the items -->
 
+<?php
+//capture their ip address
+$ip  = $_SERVER["REMOTE_ADDR"];
+//this is the path to the arp command used to get user MAC address from
+//its IP address in linux
+
+$arp="/usr/sbin/arp";
+
+//execute the arp command to get the mac address of the user connecting
+
+$mac= shell_exec("sudo $arp -an " . $ip);
+preg_match('/..:..:..:..:..:../',$mac, $matches);
+$mac =@$matches[0];
+
+//if mac couldn't be identified
+//if($mac == Null) {
+//echo "Error: Can't retrieve user's MAC address.";
+//exit;
+//}
+
+//Get what this user vote
+
+$answer = $poll->getVote();
+
+$myFile = "/Library/WebServer/Documents/questionare/app.data/sendServer.txt";
+$fh = fopen($myFile, "a");
+
+$input=json_encode(array('user' => $mac, 'vote' => $answer));
+fwrite($fh, $input);
+
+fclose($fh);
+?>
+
 <!-- [BEGIN] Show total vote counts -->
 <div style='text-align:center;margin:10px 10px;'>
 	<span style='color:white;font-weight:bold;font-size:16px;'>
@@ -35,6 +68,7 @@
 	</span>
 </div>
 <!-- [END] Show total vote counts -->
+
 
 <?php if ( $poll->ended() ): ?>
 <div class='poll-time-msg'>

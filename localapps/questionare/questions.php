@@ -1,10 +1,51 @@
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="/questionare/jquery.js"></script>
-<script type="text/javascript" src="/questionare/ajax-poll.php"></script>
+<style>
+body {
+    background-color: #d0e4fe;
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+    text-align: center;
+}
+</style>
 </head>
 <body>
-<div class='ajax-poll' tclass='poll-simple' style='width:420px;'></div>
+
+<br>
+<br>
+<h1>Welcome to this Interesting Questions Session</h1>
+
+<br>
+<br>
+<br>
+
+<p>
+<a href="poll-background-image/poll-background.php">Interesting Questions with background</a>
+</p>
+
+<br>
+
+<p>
+<a href="poll-simple/poll-simple.php">Interesting simple Questions</a>
+</p>
+
+<br>
+
+<p>
+<a href="poll-multi-choice/poll-multi.php">Interesting multiple Questions</a>
+</p>
+
 </body>
 </html>
+
+

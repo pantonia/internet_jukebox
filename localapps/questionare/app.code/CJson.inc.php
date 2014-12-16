@@ -85,7 +85,8 @@ class CJson
 	// decode
 	//----------------------------------------------------------------
 	static function decode( $json )
-	{
+	{	
+		echo json_decode($json,true);
 		return json_decode( $json, true );
 	}
 }

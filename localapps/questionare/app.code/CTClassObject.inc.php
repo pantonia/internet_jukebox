@@ -223,8 +223,8 @@ class CTClassObject
 		ob_end_clean();
 		$ret["result"] = $this->result;
 
-		echo CJson::encode( $ret );
-
+		//echo CJson::encode( $ret );
+		echo CJson::encode($ret);
 		return true;
 	}
 }

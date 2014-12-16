@@ -1,4 +1,5 @@
 <?php $poll =& $this->poll; ?>
+
 <?php include( "css/style.inc.php" ); ?>
 
 <div class='poll-front poll-simple' style='display:none;'>
@@ -39,6 +40,7 @@
 	<button class="ap-result poll-button">
 	<?php echo $poll->attr( "msg-view-result" ); ?></button>
 </div>
+
 <!-- [END] Vote & View Buttons -->
 <?php else: ?>
 <div class='poll-time-msg'>

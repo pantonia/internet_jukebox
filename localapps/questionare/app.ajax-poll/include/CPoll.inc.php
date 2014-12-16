@@ -257,7 +257,9 @@ class CPoll {
 
 		//-- add votes
 		$answer = isset( $_REQUEST['answer'] ) ? $_REQUEST['answer'] : "";
+		//echo $answer;
 		$answer = json_decode( $answer, true );
+
 		if ( $b_vote && !empty($answer) ) {
 			$b_found = false;
 			foreach( $answer as $ans ) {
@@ -272,14 +274,14 @@ class CPoll {
 				//-- truncate file
 				fseek( $handle, 0 );
 				ftruncate( $handle, 0 );
-
+								
 				//-- write votes to txt file
 				fwrite( $handle, $this->getDataTxt() );
 			} else {
 				$this->prt->showErrorMsg( "Item ({$answer}) not declared" );
 			}
 		}
-
+		
 		//-- release the lock
 		flock( $handle, LOCK_UN );
 
@@ -295,6 +297,11 @@ class CPoll {
 			$ax[] = "{$key}=" . $item->getCount();
 		}
 		return implode( "\r\n", $ax );
+	}
+
+	function getVote(){
+		$answer= isset( $_REQUEST['answer'] ) ? $_REQUEST['answer'] : "";
+		return $answer;
 	}
 }
 

@@ -1,5 +1,5 @@
-Chrome=0
-Firefox=0
-Internet Explorer=0
-Opera=0
-Safari=2
+Chrome=3
+Firefox=3
+Internet Explorer=1
+Opera=2
+Safari=6

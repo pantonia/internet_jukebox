@@ -1,0 +1,2 @@
+
+{"user":null,"vote":"[\"Chrome\"]"}{"user":null,"vote":"[\"London\"]"}{"user":null,"vote":"[\"Safari\"]"}{"user":null,"vote":"[\"Firefox\"]"}{"user":null,"vote":"[\"Dog\",\"Fish\"]"}{"user":null,"vote":""}{"user":null,"vote":""}{"user":null,"vote":""}{"user":null,"vote":""}{"user":null,"vote":""}{"user":null,"vote":""}
