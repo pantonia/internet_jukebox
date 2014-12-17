@@ -13,14 +13,17 @@ class CTClass extends CTClassBase
 	function setupPoll( $poll ) {
 
 		//-- Poll Title
-		$poll->attr( "title", "Which pet do you want to have?" );
+		$poll->attr( "title", "Please make one or more choices " );
 
 		//-- Poll Options
-		$poll->addItem( "Dog" );
-		$poll->addItem( "Cat" );
-		$poll->addItem( "Fish" );
-		$poll->addItem( "Snake" );
-
+		$poll->addItem( "Jazz" );
+		$poll->addItem( "Classical Music" );
+		$poll->addItem( "Pop" );
+		$poll->addItem( "R&B" );
+		$poll->addItem( "Rock" );
+		$poll->addItem( "Blues" );
+		$poll->addItem( "Country Music" );
+		
 		//-- Text used in polls
 		$poll->attr( "msg-vote", "Vote" );
 		$poll->attr( "msg-select-one", "Please select one option" );

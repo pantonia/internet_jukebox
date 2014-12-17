@@ -2,6 +2,9 @@
 <?php
 
 $raspberry_file = "raspberry_pis.txt";
+$data_file = "../questionare/app.data/poll-multi-choice.def/votes.txt";
+
+$data = json_decode(file_get_contents($data_file), true);
 
 $raspberries = json_decode(file_get_contents($raspberry_file), true);
 
@@ -15,7 +18,8 @@ if ($_GET['q'])
     $new_desc = $_GET['desc'];
     $new_lat = $_GET['lat'];
     $new_long = $_GET['long'];
-    $new_activity = $_GET['activity'];
+//  $new_activity = $_GET['activity'];
+    $new_activity = $data;
 
 //check if already exists
 
@@ -93,7 +97,8 @@ $("#debugdiv").load("./refresh.php");
 <div id='map'></div>
 
 <script>
-L.mapbox.accessToken = 'pk.eyJ1IjoicGFuYXlvdGlzIiwiYSI6IjhVWVREOTAifQ.NWt_NiMoXds89Q7wF81msw';
+//L.mapbox.accessToken = 'pk.eyJ1IjoicGFuYXlvdGlzIiwiYSI6IjhVWVREOTAifQ.NWt_NiMoXds89Q7wF81msw';
+L.mapbox.accessToken = 'pk.eyJ1IjoibHV5dWFueiIsImEiOiIwSkJGUkZJIn0.kO6TQZwaTwlqHLKzPOzGWg';
 
 var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/panayotis.kbh9i6fk/{z}/{x}/{y}.png', {
             attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'

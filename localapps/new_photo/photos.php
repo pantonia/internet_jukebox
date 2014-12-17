@@ -1,7 +1,3 @@
-<?php
-// Start the session
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -52,16 +48,10 @@ $(document).ready(function() {
 
 <div align="center" style="font-size:13px;font-weight:bold;">
 	<br>
-	<a href="http://localhost">&laquo; Back to HomePages.com</a>
+	<a href="../../index.html">&laquo; Back to HomePages.com</a>
 </div>
 
 <p>&nbsp;</p>
-
-<div align="center" style="font-size:9px;font-weight:bold;font-style:italic">
-	<p> If you would like to comment a photo, please click the photo and choose comment </p>
-	<p> If you would like to download a photo, please click the photo and choose download </p>
-	<p> If you would like to upload a photo, please choose one of your photos and upload </p>
-</div>
 
 <div class="gallery">  
   <?php include "folio-gallery.php"; ?>
@@ -72,6 +62,16 @@ $(document).ready(function() {
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">     
 </form>
+
+<div align="center">
+<br>
+<button onclick="myFunction()">View image uploaded</button>
+<script>
+    function myFunction() {
+        location.reload();
+    }
+</script>
+</div>
 
 <div align = "center" style = "font-size:13px; font-weight: bold">
 	<br>

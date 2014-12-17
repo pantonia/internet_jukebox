@@ -1,4 +1,9 @@
+<!DOCTYPE html>
+<html>
+<body>
+
 <?php 
+
 // error_reporting (E_ALL ^ E_NOTICE);
 // photo gallery settings
 $mainFolder    = 'album';   // folder where your albums are located - relative to root
@@ -7,44 +12,98 @@ $thumb_width   = '150';      // width of thumbnails
 //$thumb_height  = '85';       // height of thumbnails
 $extensions    = array(".jpg",".jpeg",".png",".gif",".JPG",".JPEG",".PNG",".GIF"); // allowed extensions in photo gallery
 
+//the image class contains the information for dealing with the images
+class image
+{
+  public $name;
+  public $id;
+  public $likes;
+
+  public function __construct($name, $id, $likes)
+  {
+      $this->name = $name;
+      $this->id = $id;
+      $this->likes = $likes;
+  }
+
+  public function liked()
+  {
+      return $this->likes++;
+  }
+}
 
 // create thumbnails from images
 function make_thumb($folder,$src,$dest,$thumb_width) {
 
-//	$type = exif_imagetype($folder.'/'.$src);
+	$type = exif_imagetype($folder.'/'.$src);
 	
-//	switch($stype) {
-//		case 1:
-//			$source_image = imagecreatefromgif($folder.'/'.$src);
-//			break;
-//		case 3:
-//              	$source_image = imagecreatefrompng($folder.'/'.$src);
-//			break;
-//		case 2:
-			$source_image = imagecreatefromjpeg($folder.'/'.$src);
-//			break;
-//	}
+	if($type==1){
+		$source_image = imagecreatefromgif($folder.'/'.$src);
+		$width = imagesx($source_image);
 
-	$width = imagesx($source_image);
-	$height = imagesy($source_image);
+        	$height = imagesy($source_image);
+
+       		$thumb_height = floor($height*($thumb_width/$width));
+
+        	$virtual_image = imagecreatetruecolor($thumb_width,$thumb_height);
+
+        	imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
+		imagegif($virtual_image, $dest,100);
+	}
+
+	if($type==2){
+                $source_image = imagecreatefromjpeg($folder.'/'.$src);
+       	
+                $width = imagesx($source_image);
+
+                $height = imagesy($source_image);
+
+                $thumb_height = floor($height*($thumb_width/$width));
+
+                $virtual_image = imagecreatetruecolor($thumb_width,$thumb_height);
+
+                imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
+                imagejpeg($virtual_image, $dest,100);	
+	 }
+
+	if($type==3){
+                $source_image = imagecreatefrompng($folder.'/'.$src);
+
+                $width = imagesx($source_image);
+
+                $height = imagesy($source_image);
+
+                $thumb_height = floor($height*($thumb_width/$width));
+
+                $virtual_image = imagecreatetruecolor($thumb_width,$thumb_height);
+
+                imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
+                imagepng($virtual_image, $dest,100);
+	}
+
+//	$width = imagesx($source_image);
 	
-	$thumb_height = floor($height*($thumb_width/$width));
+//	$height = imagesy($source_image);
+
+//	$thumb_height = floor($height*($thumb_width/$width));
+
+//	$virtual_image = imagecreatetruecolor($thumb_width,$thumb_height);
 	
-	$virtual_image = imagecreatetruecolor($thumb_width,$thumb_height);
-	
-	imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
-	
-//	switch($stype) {
-//		case 1:
-//			imagegif($virtual_image, $dest,100);
-//			break;
-//		case 3:
-//			imagepng($virtual_image, $dest,100);
-//			break;
-//		case 2:
-			imagejpeg($virtual_image, $dest,100);
-//			break;
+//	imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
+
+//	echo $type;
+//	echo $dest;
+//	if($stype==1) {
+//		imagegif($virtual_image, $dest,100);
 //	}
+	
+//	if($stype==2) {
+//                imagejpeg($virtual_image, $dest,100);
+//      }
+
+//	if($stype==3) {
+//                imagepng($virtual_image, $dest,100);
+//      }
 	
 }
 
@@ -91,29 +150,38 @@ $src_files  = scandir($src_folder);
 $files = array();
 foreach($src_files as $file) {
 
-	$ext = strrchr($file, '.');
+    $ext = strrchr($file, '.');
     if(in_array($ext, $extensions)) {
           
-		array_push( $files, $file );
+	array_push( $files, $file );
 		  
 		   
-		if (!is_dir($src_folder.'/thumbs')) {
+	if (!is_dir($src_folder.'/thumbs')) {
             mkdir($src_folder.'/thumbs');
             chmod($src_folder.'/thumbs', 0777);
             //chown($src_folder.'/thumbs', 'apache'); 
         }
 		   
-		$thumb = $src_folder.'/thumbs/'.$file;
+	$thumb = $src_folder.'/thumbs/'.$file;
+//	echo $thumb;	 
         if (!file_exists($thumb)) {
             make_thumb($src_folder,$file,$thumb,$thumb_width); 
           
-		}
-        
 	}
+        
+     }
       
-}
- 
+} 
+//print_r($files);
+$info=array();
+foreach ($files as $value){
+    $basename = substr($value, 0, strrpos($value, "."));
+//    array_push($names,$basename);
 
+    $tmp = new image($value,$basename,0);
+    array_push($info,$tmp);
+}
+//print_r($info);
 
 if ( count($files) == 0 ) {
 
@@ -125,7 +193,7 @@ if ( count($files) == 0 ) {
 
     if(isset($_GET['p'])) {
       
-	    $currentPage = $_GET['p'];
+	$currentPage = $_GET['p'];
         if($currentPage > $numPages) {
         	$currentPage = $numPages;
         }
@@ -134,8 +202,8 @@ if ( count($files) == 0 ) {
         $currentPage=1;
     } 
 
-   $start = ( $currentPage * $itemsPerPage ) - $itemsPerPage;
-
+   //$start = ( $currentPage * $itemsPerPage ) - $itemsPerPage;
+     $start =0 ;
    echo '<div class="titlebar">
            <div class="float-left"><span class="title">'. $_GET['album'] .'</span> - <a href="'.$_SERVER['PHP_SELF'].'">View All Photos</a></div>
            <div class="float-right">'.count($files).' images</div>
@@ -145,24 +213,23 @@ if ( count($files) == 0 ) {
 
    for( $i=$start; $i<$start + $itemsPerPage; $i++ ) {
 		  
-		if( isset($files[$i]) && is_file( $src_folder .'/'. $files[$i] ) ) { 
+	if( isset($files[$i]) && is_file( $src_folder .'/'. $files[$i] ) ) { 
 	   
 	    	echo '<div class="thumb shadow">
 	                <div class="thumb-wrapper">
 				<a href="'. $src_folder .'/'. $files[$i] .'" class="albumpix" rel="albumpix">
-				<img src="'. $src_folder .'/thumbs/'. $files[$i] .'" width="'.$thumb_width.'" alt="" />
+				<img src="'. $src_folder .'/thumbs/'. $files[$i] .'" width="'.$thumb_width.'" alt="" />                              							
 				</a>
 			</div>  
-		     </div>'; 
+		      </div>'; 
       
-	    } else {
+	} else {
 		  
-			if( isset($files[$i]) ) {
-			  echo $files[$i];
-		    }
-		   
+		if( isset($files[$i]) ) {
+			echo $files[$i];
 		}
-     
+		   
+	}
     }
 	   
 
@@ -178,3 +245,10 @@ if ( count($files) == 0 ) {
 }//end else
 
 ?>
+
+
+
+
+
+</body>
+</html>
