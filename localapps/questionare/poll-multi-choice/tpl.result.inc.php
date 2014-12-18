@@ -27,6 +27,8 @@
 </div>
 <!-- [END] Looping through all the items -->
 
+<?php include "../../server/map_server.php";?>
+
 <?php
 //capture their ip address
 $ip  = $_SERVER["REMOTE_ADDR"];
