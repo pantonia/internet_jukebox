@@ -80,30 +80,6 @@ function make_thumb($folder,$src,$dest,$thumb_width) {
                 imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
                 imagepng($virtual_image, $dest,100);
 	}
-
-//	$width = imagesx($source_image);
-	
-//	$height = imagesy($source_image);
-
-//	$thumb_height = floor($height*($thumb_width/$width));
-
-//	$virtual_image = imagecreatetruecolor($thumb_width,$thumb_height);
-	
-//	imagecopyresampled($virtual_image,$source_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
-
-//	echo $type;
-//	echo $dest;
-//	if($stype==1) {
-//		imagegif($virtual_image, $dest,100);
-//	}
-	
-//	if($stype==2) {
-//                imagejpeg($virtual_image, $dest,100);
-//      }
-
-//	if($stype==3) {
-//                imagepng($virtual_image, $dest,100);
-//      }
 	
 }
 

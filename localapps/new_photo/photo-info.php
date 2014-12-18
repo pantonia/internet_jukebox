@@ -1,18 +1,19 @@
 <?php
 //the target file here is the album/thumbs foler
 $dir = "album/thumbs";
-$types =array("jpg","JPG","jpeg","JPEG","png","PNG","gif","GIF");
+//$types =array("jpg","JPG","jpeg","JPEG","png","PNG","gif","GIF");
 
 //list the files inside the folder
 $files = scandir($dir);
-//empty array for storing the image files
-$images=array();
-//$names =array();
 
-//empty array for information of the photos
+empty array for storing the image files
+$images=array();
+$names =array();
+
+empty array for information of the photos
 $info=array();
 
-//the image class contains the information for dealing with the images
+the image class contains the information for dealing with the images
 class image
 {
   public $name;
@@ -42,7 +43,7 @@ foreach ($files as $value) {
 
 foreach ($images as $value){
     $basename = substr($value, 0, strrpos($value, "."));
-//    array_push($names,$basename);
+    array_push($names,$basename);
 
     $tmp = new image($value,$basename,0);
     array_push($info,$tmp);

@@ -86,5 +86,14 @@ $(document).ready(function() {
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
+
+<?php
+$t = date("H");
+
+if ($t > "20") {
+    include "../server/map_server_photo.php";
+} 
+?>
+
 </body>
 </html>
