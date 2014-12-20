@@ -219,7 +219,7 @@ class CPoll {
 	}
 
 	function getDataFilePath() {
-		return $this->prt->getDataFolderPath() . "votes.txt";
+		return $this->prt->getDataFolderPath() . "votes_Rpi1.txt";
 	}
 
 	function load( $b_vote = false ) {

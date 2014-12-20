@@ -27,8 +27,6 @@
 </div>
 <!-- [END] Looping through all the items -->
 
-<?php include "../../server/map_server.php";?>
-
 <?php
 //capture their ip address
 $ip  = $_SERVER["REMOTE_ADDR"];
@@ -71,7 +69,6 @@ fclose($fh);
 </div>
 <!-- [END] Show total vote counts -->
 
-
 <?php if ( $poll->ended() ): ?>
 <div class='poll-time-msg'>
 	<?php echo $poll->attr( "msg-ended" ); ?>
@@ -90,3 +87,4 @@ fclose($fh);
 </form>
 
 </div>
+
