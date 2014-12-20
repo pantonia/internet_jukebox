@@ -37,7 +37,7 @@ if ((!$conn_id) || (!$login_result)) {
 
 // upload a file
 if (ftp_put($conn_id, $file_path, $data_file, FTP_ASCII)) {
- echo "successfully uploaded $file\n";
+ echo "successfully uploaded $data_file\n";
 } else {
  echo "There was a problem while uploading $file\n";
 }
