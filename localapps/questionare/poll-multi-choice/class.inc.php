@@ -13,7 +13,7 @@ class CTClass extends CTClassBase
 	function setupPoll( $poll ) {
 
 		//-- Poll Title
-		$poll->attr( "title", "Please make one or more choices " );
+		$poll->attr( "title", "What is your favorite music?" );
 
 		//-- Poll Options
 		$poll->addItem( "Jazz" );
@@ -23,6 +23,7 @@ class CTClass extends CTClassBase
 		$poll->addItem( "Rock" );
 		$poll->addItem( "Blues" );
 		$poll->addItem( "Country Music" );
+		$poll->addItem( "Punk" );
 		
 		//-- Text used in polls
 		$poll->attr( "msg-vote", "Vote" );

@@ -4,4 +4,5 @@ Pop=0
 R&B=1
 Rock=0
 Blues=0
-Country Music=0
+Country Music=1
+Punk=2

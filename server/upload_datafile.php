@@ -12,14 +12,14 @@
 //There is a method getDataFilePath()
 //Change the votes.txt to votes_Rpi1.txt there
 
-$data_file = "../questionare/app.data/poll-multi-choice.def/votes_Rpi1.txt";
+$data_file = "../localapps/questionare/app.data/poll-multi-choice.def/votes_Rpi1.txt";
 
 //Here is the parameters of the ftp server
 $ftp_server = "ftp.internet-jukebox.org";
 $ftp_user_name="internetpk";
 $ftp_user_pass="6v2MGfNBdb65";
 
-$file_path = 'www/server/votes';
+$file_path = 'votes_Rpi1.txt';
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server)  or die ("Cannot connect to host");
@@ -37,10 +37,18 @@ if ((!$conn_id) || (!$login_result)) {
     echo "Connected to $ftp_server.";
 }
 
+ftp_chdir($conn_id, 'www/server/votes/');
+
+// get contents of the current directory
+$contents = ftp_nlist($conn_id, ".");
+//
+// // output $contents
+var_dump($contents);
+
 
 // upload a file
-if (ftp_put($conn_id, $file_path, $data_file, FTP_ASCII)) {
- echo "successfully uploaded $data_file\n";
+if (ftp_put($conn_id, $file_path, $data_file, FTP_BINARY)) {
+ echo "<br/>successfully uploaded $data_file\n";
 } else {
  echo "There was a problem while uploading $file\n";
 }
