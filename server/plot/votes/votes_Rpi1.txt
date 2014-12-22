@@ -1,0 +1,7 @@
+Jazz=2
+Classical Music=0
+Pop=1
+R&B=2
+Rock=1
+Blues=1
+Country Music=1
